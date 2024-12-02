@@ -1,70 +1,74 @@
-import java.util.Random;
-import java.util.Scanner;
-class Guessnum
+import java.util.*;
+class IPL_Cricket
 {
-   public static void main(String args[])
+   public int played_matches;
+   public int won;
+   public int loss;
+   public void played_matches(int x)
    {
-     try
-      {
-        Scanner sc=new Scanner(System.in);
-        Random r=new Random();
-        int arr1[]=new int[5];
-        int rand=10000+r.nextInt(90000);
-        int num=rand;
-        for(int i=4;i>=0;i--)
-        {
-            arr1[i]=num%10;
-            num=num/10;
-        }
-        int n,count,sum,f=0;            
-        int arr2[]=new int[5];
-        while(true)
-        {
-             System.out.println("Enter the guess number:");
-             n=sc.nextInt();
-             f++;
-             while(n<10000||n>99999)
-             {
-                f++;
-		System.out.println("Enter the guess number between 10000 and 99999");
-                n=sc.nextInt();
-                if(f==3)
-                {
-                   System.out.println("Guess number:" +rand);
-                   throw new ArithmeticException("turns over");
-                }
-             }
-             count=0;
-             sum=0;
-             for(int i=4;i>=0;i--)
-             {
-               arr2[i]=n%10;
-               n=n/10;
-             }
-             for(int i=0;i<=4;i++)
-             {
-               if(arr1[i]==arr2[i])
-                {
-		  count++;
-                  sum=sum+arr1[i];
-                }
-             }
-             System.out.println(count+ "and "+sum);
-             if(f==3)
-             {
-                   System.out.println("Guess number:" +rand);
-                   throw new ArithmeticException("turns over");
-             }
-        }
-    }
-    catch(ArithmeticException e)
-    {
-       System.out.println("No.of guesses are over...");
-    }
-    catch(Exception e)
-    {
-      System.out.println("Exception :" +e);
-    }
-  }
-}      
-
+      played_matches=x;
+   }
+   public void win(int w)
+   {
+     won=w;
+   }
+   public void loss(int l)
+   {
+     loss=l;
+   }
+}
+class Hyd_Sunrisers extends IPL_Cricket
+{
+   public void display()
+   {
+     if((won+loss)<=played_matches)
+     {
+       System.out.println("Hyd_Sunrisers Summary :");
+       System.out.println("Played Matches : "+played_matches);
+       System.out.println("Won : "+won);
+       System.out.println("Loss : "+loss);
+     }
+     else
+       System.out.println("Invalid wins and loss");
+   }
+}
+class Chennai_SuperKings extends IPL_Cricket
+{
+   public void display()
+   {
+     if((won+loss)<=played_matches)
+     {
+       System.out.println("Chennai_SuperKings Summary :");
+       System.out.println("Played Matches : "+played_matches);
+       System.out.println("Won : "+won);
+       System.out.println("Loss : "+loss);
+     }
+     else
+       System.out.println("Invalid wins and loss");
+   }
+}
+class IPL
+{
+   public static void main(String[] args)
+   {
+     Scanner sc=new Scanner(System.in);
+     Hyd_Sunrisers ob1=new Hyd_Sunrisers();
+     Chennai_SuperKings ob2=new Chennai_SuperKings(); 
+     System.out.print("Enter matches,wins,loss of SRH : ");
+     int x=sc.nextInt();
+     int a=sc.nextInt();
+     int b=sc.nextInt();
+     System.out.print("Enter matches,wins,loss of CSK : ");
+     int y=sc.nextInt();
+     int p=sc.nextInt();
+int q=sc.nextInt();
+     ob1.played_matches(x);
+     ob1.win(a);
+     ob1.loss(b);
+     ob1.display();
+     ob2.played_matches(y);
+     ob2.win(p);
+     ob2.loss(q);
+     ob2.display();
+   }
+}
