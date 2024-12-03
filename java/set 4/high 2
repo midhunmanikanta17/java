@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+class Highscore
+{
+	public static void main(String args[])
+	{
+	   try
+	   {
+		Scanner input=new Scanner(System.in);
+		System.out.println("Enter the file name: ");
+		String file=input.nextLine();
+		FileInputStream f=new FileInputStream(file);
+		int count=0;
+		while(f.read()!=-1)
+		{
+		    count++;
+		}
+		f.close();
+		Reader in=new FileReader(file);
+		char c[]=new char[count];
+		in.read(c);
+		String s=new String(c);
+		StringTokenizer sc=new StringTokenizer(s);
+		int arr[]=new int[100];
+		int i=0;
+		while(sc.hasMoreTokens())
+		{
+		    arr[i]=Integer.parseInt(sc.nextToken());
+		    i++;
+		}
+		int max=arr[0];
+		for(int j=0;j<i;j++)
+		{
+		   if(arr[j]>max)
+		         max=arr[j];
+		}
+		System.out.println("The Highest score is: "+max);
+		in.close();
+	   }
+	   catch(FileNotFoundException e)
+	   {
+		System.out.println("FileNotFoundException : File is not found");
+   }
+	   catch(Exception e)
+	   {
+		System.out.println(e);
+	   }
+	}
+}
