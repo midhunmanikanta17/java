@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class MaxFinder {
+public static int max(int a, int b) {
+return (a > b) ? a : b;
+}
+public static double max(double a, double b) {
+return (a > b) ? a : b;
+}
+public static double max(double a, double b, double c) {
+return (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c);
+}
+public static void main(String[] args) {
+Scanner scn = new Scanner(System.in);
+System.out.println("Enter two integers:");
+int a = scn.nextInt();
+int b = scn.nextInt();
+int result1 = max(a , b);
+System.out.println("Enter two double values:");
+double a1 = scn.nextDouble();
+double b1 = scn.nextDouble();
+double result2 = max(a1 , b1);
+System.out.println("Enter three double values:");
+double a2 = scn.nextDouble();
+double b2 = scn.nextDouble();
+double c2 = scn.nextDouble();
+double result3 = max(a2 , b2 , c2);
+System.out.println();
+System.out.println(result1);
+System.out.println(result2);
+System.out.println(result3);
+}
