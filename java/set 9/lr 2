@@ -1,0 +1,26 @@
+import java.util.*;
+class LeftRotate {
+public static void main(String args[]) {
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter the size of array:");
+int size = sc.nextInt();
+int[] arr = new int[size];
+System.out.println("Enter the number of rotations:");
+int numrotations = sc.nextInt();
+System.out.println("Enter the array elements:");
+for (int i = 0; i < size; i++) {
+arr[i] = sc.nextInt();
+}
+for (int i = 1; i <= numrotations; i++) {
+int temp = arr[0];
+for (int j = 0; j < size - 1; j++) {
+arr[j] = arr[j + 1];
+}
+arr[size - 1] = temp;
+}
+System.out.println("Array after rotations:");
+for (int i = 0; i < size; i++) {
+System.out.print(arr[i] + " ");
+}
+}
+}
